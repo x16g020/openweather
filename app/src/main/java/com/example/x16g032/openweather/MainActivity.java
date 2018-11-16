@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements XmlReader.OnStarL
     public void onStar(List<Map> stars) {
 
         ImageView weatherImage = findViewById(R.id.WeatherImage);
+        TextView dateText = findViewById(R.id.dateT);
         TextView textView = findViewById(R.id.textView);
         if(stars!=null) {
 //            textView.setText("結果\n");
@@ -31,7 +32,8 @@ public class MainActivity extends AppCompatActivity implements XmlReader.OnStarL
 
 //            int num = Integer.parseInt(map.get("symbol_number"));
             if (map.get("symbol_number").equals(800)) {
-                weatherImage.setImageResource(R.drawable.sunnyimage);
+                dateText.append("sunny");
+//                weatherImage.setImageResource(R.drawable.sunnyimage);
             }
         }
 //            for (Map map : stars) {
