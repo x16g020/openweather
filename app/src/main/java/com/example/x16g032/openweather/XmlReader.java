@@ -60,6 +60,9 @@ public class XmlReader {
                             for(int j = 0; j < nodeList2.getLength(); j++) {
                                 //j番目のtimeノードを格納
                                 Node node2 = nodeList2.item(j);
+                                if (String.valueOf(node2.getNodeName()).equals("time")) {
+
+                                }
                                 //timeの子ノード（symbol,precipitation,windDirectio,windSpeed,tempererure,pressure,humidity,clouds）を格納
                                 NodeList nodeList3 = node2.getChildNodes();
                                 for(int k = 0; k < nodeList3.getLength(); k++) {
@@ -70,7 +73,7 @@ public class XmlReader {
                                         Node attr3 = attrs2.getNamedItem("name");
                                         Node attr4 = attrs2.getNamedItem("var");
                                         if (attr2 != null) {
-                                            map = new HashMap();
+//                                            map = new HashMap();
                                             map.put("symbol_number", String.valueOf(attr2.getNodeValue()));
                                             map.put("symbol_name", String.valueOf(attr3.getNodeValue()));
                                             map.put("symbol_var", String.valueOf(attr4.getNodeValue()));
@@ -84,7 +87,7 @@ public class XmlReader {
                                         Node attr3 = attrs2.getNamedItem("value");
                                         Node attr4 = attrs2.getNamedItem("type");
                                         if (attr2 != null) {
-                                            map = new HashMap();
+//                                            map = new HashMap();
                                             map.put("precipitation_unit", String.valueOf(attr2.getNodeValue()));
                                             map.put("precipitation_value", String.valueOf(attr3.getNodeValue()));
                                             map.put("precipitation_type", String.valueOf(attr4.getNodeValue()));
@@ -98,7 +101,7 @@ public class XmlReader {
                                         Node attr3 = attrs2.getNamedItem("code");
                                         Node attr4 = attrs2.getNamedItem("name");
                                         if (attr2 != null) {
-                                            map = new HashMap();
+//                                            map = new HashMap();
                                             map.put("windDirection_deg", String.valueOf(attr2.getNodeValue()));
                                             map.put("windDirection_code", String.valueOf(attr3.getNodeValue()));
                                             map.put("windDirection_name", String.valueOf(attr4.getNodeValue()));
@@ -111,7 +114,7 @@ public class XmlReader {
                                         Node attr2 = attrs2.getNamedItem("mps");
                                         Node attr3 = attrs2.getNamedItem("name");
                                         if (attr2 != null) {
-                                            map = new HashMap();
+//                                            map = new HashMap();
                                             map.put("windSpeed_mps", String.valueOf(attr2.getNodeValue()));
                                             map.put("windSpeed_name", String.valueOf(attr3.getNodeValue()));
                                             list.add(map);
@@ -125,7 +128,7 @@ public class XmlReader {
                                         Node attr4 = attrs2.getNamedItem("min");
                                         Node attr5 = attrs2.getNamedItem("max");
                                         if (attr2 != null) {
-                                            map = new HashMap();
+//                                            map = new HashMap();
                                             map.put("temperature_unit", String.valueOf(attr2.getNodeValue()));
                                             map.put("temperature_value", String.valueOf(attr3.getNodeValue()));
                                             map.put("temperature_min", String.valueOf(attr4.getNodeValue()));
@@ -139,7 +142,7 @@ public class XmlReader {
                                         Node attr2 = attrs2.getNamedItem("unit");
                                         Node attr3 = attrs2.getNamedItem("value");
                                         if (attr2 != null) {
-                                            map = new HashMap();
+//                                            map = new HashMap();
                                             map.put("pressure_unit", String.valueOf(attr2.getNodeValue()));
                                             map.put("pressure_value", String.valueOf(attr3.getNodeValue()));
                                             list.add(map);
@@ -152,7 +155,7 @@ public class XmlReader {
                                         Node attr2 = attrs2.getNamedItem("value");
                                         Node attr3 = attrs2.getNamedItem("unit");
                                         if (attr2 != null) {
-                                            map = new HashMap();
+//                                            map = new HashMap();
                                             map.put("humidity_value", String.valueOf(attr2.getNodeValue()));
                                             map.put("humidity_unit", String.valueOf(attr3.getNodeValue()));
                                             list.add(map);
@@ -165,7 +168,7 @@ public class XmlReader {
                                         Node attr3 = attrs2.getNamedItem("all");
                                         Node attr4 = attrs2.getNamedItem("unit");
                                         if (attr2 != null) {
-                                            map = new HashMap();
+//                                            map = new HashMap();
                                             map.put("clouds_value", String.valueOf(attr2.getNodeValue()));
                                             map.put("clouds_all", String.valueOf(attr3.getNodeValue()));
                                             map.put("clouds_unit", String.valueOf(attr4.getNodeValue()));
