@@ -60,8 +60,15 @@ public class XmlReader {
                             for(int j = 0; j < nodeList2.getLength(); j++) {
                                 //j番目のtimeノードを格納
                                 Node node2 = nodeList2.item(j);
-                                if (String.valueOf(node2.getNodeName()).equals("time")) {
-
+                                if (String.valueOf(node2.getNodeName()).equals("time")){
+                                    NamedNodeMap attrs2 = node2.getAttributes();
+                                    Node attr2 = attrs2.getNamedItem("from");
+                                    Node attr3 = attrs2.getNamedItem("to");
+                                    if (attr2 != null) {
+                                        map.put("time_from", String.valueOf(attr2.getNodeValue()));
+                                        map.put("time_to", String.valueOf(attr3.getNodeValue()));
+                                        list.add(map);
+                                    }
                                 }
                                 //timeの子ノード（symbol,precipitation,windDirectio,windSpeed,tempererure,pressure,humidity,clouds）を格納
                                 NodeList nodeList3 = node2.getChildNodes();

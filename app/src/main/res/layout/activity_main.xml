@@ -2,6 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/freamlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/sunny_sky"
@@ -26,36 +27,38 @@
         </FrameLayout>
 
         <LinearLayout
+            android:id="@+id/f_l_linearlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/dateT"
-                android:layout_width="match_parent"
+                android:layout_width="700px"
                 android:layout_height="60dp"
                 android:gravity="center"
                 android:text="読み込み中"
                 android:textColor="@android:color/background_dark"
-                android:textSize="50px" />
+                android:textSize="70px" />
 
             <TextView
                 android:id="@+id/temperature"
-                android:layout_width="match_parent"
+                android:layout_width="700px"
                 android:layout_height="60dp"
                 android:gravity="center"
                 android:text="読み込み中"
                 android:textColor="@android:color/background_dark"
-                android:textSize="50px" />
+                android:textSize="70px" />
 
             <TextView
                 android:id="@+id/max_min"
-                android:layout_width="match_parent"
+                android:layout_width="700px"
                 android:layout_height="60dp"
                 android:gravity="center"
                 android:text="読み込み中"
                 android:textColor="@android:color/background_dark"
-                android:textSize="50px" />
+                android:textSize="70px" />
         </LinearLayout>
 
         <LinearLayout

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,14 +18,21 @@ public class MainActivity extends AppCompatActivity implements XmlReader.OnStarL
 
     int     num;
     int     cnt;
-    String  dateT;
-//    Date dateValue;
+
+    String  datetext;
+    String  year;
+    String  month;
+    String  day;
+    String  hour;
+    int     hour_int;
 
     Double  temperature;
     Double  h_temperature;
     Double  l_temperature;
 
-    ImageView weatherImage;
+    ImageView   weatherImage;
+    FrameLayout f_layout;
+
     TextView dateText;
     TextView temp;
     TextView max_min;
@@ -40,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements XmlReader.OnStarL
         setContentView(R.layout.activity_main);
 
         weatherImage = findViewById(R.id.WeatherImage);
-        weatherImage.setImageResource(R.drawable.sunny);
+        f_layout = findViewById(R.id.freamlayout);
 
         dateText = findViewById(R.id.dateT);
         temp = findViewById(R.id.temperature);
@@ -72,35 +80,51 @@ public class MainActivity extends AppCompatActivity implements XmlReader.OnStarL
         //イベントの設定
 
         if(stars!=null) {
-//            textView.setText("結果\n");
             Map map = stars.get(cnt);
-            num = Integer.parseInt(map.get("symbol_number").toString());
+            num = 600;
 
-//            int num = Integer.parseInt(map.get("symbol_number"));
             if (num >= 800) {
                 weatherImage.setImageResource(R.drawable.sunny);
+                f_layout.setBackgroundDrawable(getResources().getDrawable(R.drawable.sunny_sky));
             }else if (num >= 600 && num < 800){
                 weatherImage.setImageResource(R.drawable.rainny);
+                f_layout.setBackgroundDrawable(getResources().getDrawable(R.drawable.rainny_sky));
             }else{
             }
 
-            dateT = map.get("")
-
-//            String s = "テストもじれつ";
-//            s = s.substring(0,4);
-//            max_min.setText(s);
-
-//            temperature = Double.parseDouble(map.get("temperature_value").toString()) - KELVIN;
-//            h_temperature = Double.parseDouble(map.get("temperature_max").toString()) - KELVIN;
-//            l_temperature = Double.parseDouble(map.get("temperature_min").toString()) - KELVIN;
+            datetext = map.get("time_from").toString();
+            year = datetext.substring(0,4);
+            month = datetext.substring(5,7);
+            day = datetext.substring(8,10);
+            hour = datetext.substring(11,13);
+            hour_int = Integer.parseInt(hour);
+            dateText.setText(year + "年" + month + "月" + day + "日 " + hour_int + "時");
 
             temperature = Double.parseDouble(map.get("temperature_value").toString());
-//            h_temperature = Double.parseDouble(map.get("temperature_max").toString());
-//            l_temperature = Double.parseDouble(map.get("temperature_min").toString());
-
             temp.setText(String.valueOf(temperature));
-//            max_min.setText(String.valueOf(h_temperature) + " / " + String.valueOf(l_temperature));
         }
+    }
+
+
+    @Override
+    public void onClick(View v) {
+//        if(v.getId() == R.id.before_day){
+//            if(cnt < 8){
+//                cnt = 0;
+//            }else {
+//                cnt = cnt - 8;
+//            }
+//        }else if(v.getId() == R.id.before_hour){
+//            cnt = cnt - 1;
+//        }else if(v.getId() == R.id.after_hour){
+//            cnt = cnt + 1;
+//        }else if(v.getId() == R.id.after_day){
+//
+//        }
+    }
+}
+
+
 
 
 
@@ -128,23 +152,3 @@ public class MainActivity extends AppCompatActivity implements XmlReader.OnStarL
 //        }else{
 //            textView.setText("エラー\n");
 //        }
-    }
-
-
-    @Override
-    public void onClick(View v) {
-//        if(v.getId() == R.id.before_day){
-//            if(cnt < 8){
-//                cnt = 0;
-//            }else {
-//                cnt = cnt - 8;
-//            }
-//        }else if(v.getId() == R.id.before_hour){
-//            cnt = cnt - 1;
-//        }else if(v.getId() == R.id.after_hour){
-//            cnt = cnt + 1;
-//        }else if(v.getId() == R.id.after_day){
-//
-//        }
-    }
-}
