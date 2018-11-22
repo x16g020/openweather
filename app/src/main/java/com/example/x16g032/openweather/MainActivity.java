@@ -69,10 +69,10 @@ public class MainActivity extends AppCompatActivity implements XmlReader.OnStarL
         hour_after.setOnClickListener(this);
         day_after.setOnClickListener(this);
 
-        day_before.setEnabled(false);
-        hour_before.setEnabled(false);
-        hour_after.setEnabled(false);
-        day_after.setEnabled(false);
+//        day_before.setEnabled(false);
+//        hour_before.setEnabled(false);
+//        hour_after.setEnabled(false);
+//        day_after.setEnabled(false);
     }
 
     @Override
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements XmlReader.OnStarL
 
         if(stars!=null) {
             Map map = stars.get(cnt);
-            num = 600;
+            num = 400;
 
             if (num >= 800) {
                 weatherImage.setImageResource(R.drawable.sunny);
@@ -89,6 +89,9 @@ public class MainActivity extends AppCompatActivity implements XmlReader.OnStarL
             }else if (num >= 600 && num < 800){
                 weatherImage.setImageResource(R.drawable.rainny);
                 f_layout.setBackgroundDrawable(getResources().getDrawable(R.drawable.rainny_sky));
+            }else if (num >= 400 && num < 600){
+                weatherImage.setImageResource(R.drawable.cloudy);
+                f_layout.setBackgroundDrawable(getResources().getDrawable(R.drawable.cloudy_sky));
             }else{
             }
 
@@ -108,19 +111,19 @@ public class MainActivity extends AppCompatActivity implements XmlReader.OnStarL
 
     @Override
     public void onClick(View v) {
-//        if(v.getId() == R.id.before_day){
-//            if(cnt < 8){
-//                cnt = 0;
-//            }else {
-//                cnt = cnt - 8;
-//            }
-//        }else if(v.getId() == R.id.before_hour){
-//            cnt = cnt - 1;
-//        }else if(v.getId() == R.id.after_hour){
-//            cnt = cnt + 1;
-//        }else if(v.getId() == R.id.after_day){
-//
-//        }
+        if(v.getId() == R.id.before_day){
+            if(cnt < 8){
+                cnt = 0;
+            }else {
+                cnt = cnt - 8;
+            }
+        }else if(v.getId() == R.id.before_hour){
+            cnt = cnt - 1;
+        }else if(v.getId() == R.id.after_hour){
+            cnt = cnt + 1;
+        }else if(v.getId() == R.id.after_day){
+
+        }
     }
 }
 
