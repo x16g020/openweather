@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements XmlReader.OnStarL
         //イベントの設定
 
         if(stars!=null) {
-            Map map = stars.get(cnt);
+            Map map = stars.get(10);
             num = 400;
 
             if (num >= 800) {
