@@ -1,7 +1,6 @@
 package com.example.x16g032.openweather;
 
 import android.os.Handler;
-import android.util.Log;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -211,7 +210,5 @@ public class XmlReader {
                 }
             }
         }.start();
-
     }
-
 }

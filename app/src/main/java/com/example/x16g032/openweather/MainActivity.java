@@ -1,6 +1,8 @@
 package com.example.x16g032.openweather;
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -8,7 +10,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -42,17 +43,27 @@ public class MainActivity extends AppCompatActivity implements XmlReader.OnStarL
     Button hour_after;
     Button day_after;
 
+    private ViewPager pager;
+    private FragmentPagerAdapter adapter;
+    private int currentPage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        weatherImage = findViewById(R.id.WeatherImage);
-        f_layout = findViewById(R.id.freamlayout);
+        weatherImage    = findViewById(R.id.WeatherImage);
+        f_layout        = findViewById(R.id.framelayout);
 
-        dateText = findViewById(R.id.dateT);
-        temp = findViewById(R.id.temperature);
-        max_min = findViewById(R.id.max_min);
+        dateText    = findViewById(R.id.dateT);
+        temp        = findViewById(R.id.temperature);
+        max_min     = findViewById(R.id.max_min);
+
+        pager = (ViewPager) findViewById(R.id.pager);
+
+        adapter = new UserInfoViewPagerAdapter(getSupportFragmentManager());
+        pager.setAdapter(adapter);
+        currentPage = 0;
 
         cnt = 0;
 
@@ -125,6 +136,7 @@ public class MainActivity extends AppCompatActivity implements XmlReader.OnStarL
 
         }
     }
+
 }
 
 
